@@ -10,6 +10,13 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { ContactProvider } from '../providers/contact/contact';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { CadastroPage } from '../pages/cadastro/cadastro';
+import { LoginPage } from '../pages/login/login';
+import { ProdutosPage } from '../pages/produtos/produtos';
+import { ProdutosProvider } from '../providers/produtos/produtos';
 
 @NgModule({
   declarations: [
@@ -17,11 +24,23 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    CadastroPage,
+    LoginPage,
+    ProdutosPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp({
+      apiKey: "AIzaSyA19DL43LPJCd4_0l9kvYb0c-J45xdR3Rw",
+        authDomain: "appmoda-c73e9.firebaseapp.com",
+        databaseURL: "https://appmoda-c73e9.firebaseio.com",
+        projectId: "appmoda-c73e9",
+        storageBucket: "",
+        messagingSenderId: "1071276916284"
+    }),
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -29,12 +48,17 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    CadastroPage,
+    LoginPage,
+    ProdutosPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ContactProvider,
+    ProdutosProvider
   ]
 })
 export class AppModule {}
