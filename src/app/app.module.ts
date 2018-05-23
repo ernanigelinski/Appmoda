@@ -13,10 +13,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ContactProvider } from '../providers/contact/contact';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireStorageModule } from 'angularfire2/storage';
 import { CadastroPage } from '../pages/cadastro/cadastro';
 import { LoginPage } from '../pages/login/login';
 import { ProdutosPage } from '../pages/produtos/produtos';
 import { ProdutosProvider } from '../providers/produtos/produtos';
+import { Camera } from '@ionic-native/camera';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +43,8 @@ import { ProdutosProvider } from '../providers/produtos/produtos';
         storageBucket: "",
         messagingSenderId: "1071276916284"
     }),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    AngularFireStorageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -58,7 +62,8 @@ import { ProdutosProvider } from '../providers/produtos/produtos';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ContactProvider,
-    ProdutosProvider
+    ProdutosProvider,
+    Camera
   ]
 })
 export class AppModule {}
