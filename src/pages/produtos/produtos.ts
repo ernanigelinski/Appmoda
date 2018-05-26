@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ProdutosProvider } from '../../providers/produtos/produtos';
-import { Camera, CameraOptions } from '@ionic-native/camera';
+
+
 
 /**
  * Generated class for the ProdutosPage page.
@@ -22,14 +23,12 @@ export class ProdutosPage {
   title: string;
   formprod: FormGroup;
   produto: any;
-  foto: any;
-
+  foto:'';
   constructor(
     public navCtrl: NavController,
     private toast: ToastController,
     public navParams: NavParams,
     private provider: ProdutosProvider,
-    private camera: Camera,
     private formBuilder: FormBuilder) {
     this.produto = this.navParams.data.produtos || {};
     this.criaForm();
@@ -51,41 +50,11 @@ export class ProdutosPage {
       referencia: [this.produto.referencia],
       preco: [this.produto.preco],
       compdesc: [this.produto.compdesc],
-      categoria: [this.produto.categoria]
+      categoria: [this.produto.categoria],
+      quantidade: [this.produto.quantidade],
+      foto: ['']
     })
   }
-
-  Foto(){
-    const options: CameraOptions = {
-      quality: 100,
-      destinationType: this.camera.DestinationType.DATA_URL,
-      mediaType: this.camera.PictureSourceType.PHOTOLIBRARY,
-      saveToPhotoAlbum:false
-    }
-    
-    this.camera.getPicture(options).then((imageData) => {
-     // imageData is either a base64 encoded string or a file URI
-     // If it's base64:
-     this.foto = 'data:image/jpeg;base64,' + imageData;
-     this.uploadInformation(this.foto);
-    }, (err) => {
-     // Handle error
-    });
-  }
-
-  uploadInformation(text){
-    let upload = this.dataProvider.uploadToStorage(text);
-    upload.then().then(res => {
-      this.dataProvider.storeInfoToDatabase(res.metadata).then(()=>{
-        let toast = this.toastCtrl.create({
-          message: 'New File Added!',
-          duration: 3000
-        });
-        toast.present();
-      });
-    });
-  }
-
 
   salvarproduto() {
     if (this.formprod.valid) {

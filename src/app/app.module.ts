@@ -18,7 +18,8 @@ import { CadastroPage } from '../pages/cadastro/cadastro';
 import { LoginPage } from '../pages/login/login';
 import { ProdutosPage } from '../pages/produtos/produtos';
 import { ProdutosProvider } from '../providers/produtos/produtos';
-import { Camera } from '@ionic-native/camera';
+import { ExibeProdutosPage } from '../pages/exibe-produtos/exibe-produtos';
+
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { Camera } from '@ionic-native/camera';
     TabsPage,
     CadastroPage,
     LoginPage,
-    ProdutosPage
+    ProdutosPage,
+    ExibeProdutosPage
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,8 @@ import { Camera } from '@ionic-native/camera';
     TabsPage,
     CadastroPage,
     LoginPage,
-    ProdutosPage
+    ProdutosPage,
+    ExibeProdutosPage
   ],
   providers: [
     StatusBar,
@@ -63,7 +66,6 @@ import { Camera } from '@ionic-native/camera';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ContactProvider,
     ProdutosProvider,
-    Camera
   ]
 })
 export class AppModule {}
