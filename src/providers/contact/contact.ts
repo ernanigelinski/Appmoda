@@ -19,12 +19,12 @@ export class ContactProvider {
     return new Promise((resolve, reject) => {
       if (cliente.key){
         this.db.list(this.PATH)
-          .update(cliente.key, {cpf: cliente.cpf, nome: cliente.nome})
+          .update(cliente.key, {nome: cliente.nome, endereco: cliente.endereco, numeroEnd: cliente.numeroEnd, bairro:cliente.bairro, telefone: cliente.telefone,  email: cliente.email, senha: cliente.senha})
           .then(() => resolve())
           .catch((e) => reject(e));
       }else{
         this.db.list(this.PATH)
-        .push({nome: cliente.nome, cpf: cliente.cpf})
+        .push({nome: cliente.nome, endereco: cliente.endereco, numeroEnd: cliente.numeroEnd, bairro:cliente.bairro, telefone: cliente.telefone, email: cliente.email, senha: cliente.senha})
         .then(() => resolve());  
       }
     });

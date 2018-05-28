@@ -14,7 +14,7 @@
     </ion-item>
 
   <div padding>
-  <ion-segment [(ngModel)]="vestidos">
+  <ion-segment [(ngModel)]="produtos">
     <ion-segment-button value="blusas">
       Blusas
     </ion-segment-button>
@@ -33,32 +33,32 @@
   </ion-segment>
 </div>
 
-<div [ngSwitch]="calcas">
+<div [ngSwitch]="produtos">
   <ion-list *ngSwitchCase="'calcas'">
     
   </ion-list>
 </div>
 
-<div [ngSwitch]="blusas">              
+<div [ngSwitch]="produtos">              
   <ion-list *ngSwitchCase="'blusas'">
     
   </ion-list>
 </div>
 
-<div [ngSwitch]="vestidos">
+<div [ngSwitch]="prosutos">
   <ion-list *ngSwitchCase="'vestidos'">
     
   </ion-list>
 </div>
 
-<div [ngSwitch]="casacos">
+<div [ngSwitch]="produtos">
   <ion-list *ngSwitchCase="'casacos'">
    
       
   </ion-list>
 </div>
 
-<div [ngSwitch]="coletes">
+<div [ngSwitch]="produtos">
   <ion-list *ngSwitchCase="'coletes'">
     
 

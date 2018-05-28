@@ -1,15 +1,10 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavParams, ToastController, AlertController } from 'ionic-angular';
 import { ContactProvider } from '../../providers/contact/contact';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HomePage } from '../home/home';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { LoginPage } from '../login/login';
 
-/**
- * Generated class for the CadastroPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -20,33 +15,51 @@ export class CadastroPage {
 
   [x: string]: any;
   title: string;
-  form: FormGroup;
+  formCliente: FormGroup;
   cliente: any;
+  @ViewChild('email') email;
+  @ViewChild('password') password;
 
   constructor(public navParams: NavParams,
     private toast: ToastController,
     private provider: ContactProvider,
+    private fire: AngularFireAuth,
+    private alertCtrl: AlertController,
     private formBuilder: FormBuilder) {
-      this.cliente = this.navParams.data.contato || {};
-      this.criaForm();
-      this.setupPageTitle();
+    this.cliente = this.navParams.data.contato || {};
+    this.criaForm();
+    this.setupPageTitle();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CadastroPage');
   }
+/*
+  registrarcliente() {
+    this.fire.auth.createUserWithEmailAndPassword(this.email.value, this.password.value)
+      .then(data => {
+        this.alert('Cadastro efetuado com sucesso!!!');
+        this.navCtrl.push(LoginPage);
+      })
+      .catch((error: any) => {
+        if (error.code == 'auth/email-already-in-use') { this.alert('E-mail já Cadastrado!'); }
+        else if (error.code == 'auth/invalid-email') { this.alert(' E-mail Invalido!'); }
+        else if (error.code == 'auth/operation-not-allowed') { this.alert('A conta precisa ser ativada!'); }
+        else if (error.code == 'auth/weak-password') { this.alert('A senha é muito fraca!'); }
+      })
+}
+*/
 
-  private setupPageTitle(){
+  private setupPageTitle() {
     this.title = this.navParams.data.clientes ? 'Alterando Cliente' : 'Novo Cliente'
   }
 
-  criaForm(){
-    this.form = this.formBuilder.group({
+  criaForm() {
+    this.formCliente = this.formBuilder.group({
       key: [this.cliente.key],
       nome: [this.cliente.nome, Validators.required],
-      cpf: [this.cliente.cpf, Validators.required],
       endereco: [this.cliente.endereco, Validators.required],
-      numero: [this.cliente.numero, Validators.required],
+      numeroEnd: [this.cliente.numeroEnd, Validators.required],
       bairro: [this.cliente.bairro, Validators.required],
       telefone: [this.cliente.telefone, Validators.required],
       email: [this.cliente.email, Validators.required],
@@ -54,17 +67,16 @@ export class CadastroPage {
     })
   }
 
-  salvar(){
-    if(this.form.valid){
-      this.provider.salvar(this.form.value)
-      .then(() => {
-        this.toast.create({message: 'Cliente Salvo', duration: 3000}).present();
-        this.navCtrl.push(HomePage);
-      })
-      .catch((e) => {
-        this.toast.create({message: 'Erro ao Salvar Cliente Salvo', duration: 3000}).present();
-        console.error(e);
-      })
+  salvar() {
+    if (this.formCliente.valid) {
+      this.provider.salvar(this.formCliente.value)
+        .then(() => {
+          this.toast.create({ message: 'Cliente Salvo', duration: 3000 }).present();
+          this.navCtrl.push(LoginPage);
+        })
+        .catch(error => {
+          console.log('error', error)
+        })
     }
   }
 }

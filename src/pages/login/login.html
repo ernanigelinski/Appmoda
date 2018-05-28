@@ -15,19 +15,20 @@
 
 <ion-content padding>
   
-  <ion-item>
-    <ion-label stacked>E-mail</ion-label>
-    <ion-input type="email"#email></ion-input>
-  </ion-item>
-  
-  <ion-item>
-    <ion-label stacked>Senha</ion-label>
-    <ion-input type="password" #password></ion-input>
-  </ion-item>
-  
-  <ion-item>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>email</ion-label>
+      <ion-input type="email" #email></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label floating>Senha</ion-label>
+        <ion-input type="password" #password></ion-input>
+      </ion-item>
+  </ion-list>
+  <div padding>
     <button block ion-button (click)="acessar()" item-left>Acessar</button>
-  </ion-item>
+  </div>
+  <a (click)="cadastrarCliente()" item-left>Não tem Cadastro? Clique aqui</a>
 
   <h4>Logar com:</h4>
   <button ion-button (click)="logarComFacebook()">
