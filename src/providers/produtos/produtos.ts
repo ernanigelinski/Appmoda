@@ -18,8 +18,6 @@ export class ProdutosProvider {
     console.log('Hello ProdutosProvider Provider');
   }
 
-  
-
   salvarproduto(produto: any) {
     return new Promise((resolve, reject) => {
       if (produto.key) {
@@ -34,4 +32,14 @@ export class ProdutosProvider {
       }
     });
   }
+
+  buscarTodos(){
+    return this.db.list(this.PATH)
+    .snapshotChanges()
+    .map(Changes => {
+      return Changes.map(c =>({
+        key: c.key, ...c.payload.val()}));
+      })
+    }
+    
 }

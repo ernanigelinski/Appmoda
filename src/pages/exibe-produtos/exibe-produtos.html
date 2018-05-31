@@ -9,65 +9,16 @@
 
 <ion-content padding>
     
-    <ion-item>
-        <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-    </ion-item>
-
-  <div padding>
-  <ion-segment [(ngModel)]="produtos">
-    <ion-segment-button value="blusas">
-      Blusas
-    </ion-segment-button>
-    <ion-segment-button value="calcas">
-      Calcas
-    </ion-segment-button>
-    <ion-segment-button value="casacos">
-      Casacos
-    </ion-segment-button>
-    <ion-segment-button value="coletes">
-      Coletes
-    </ion-segment-button>
-    <ion-segment-button value="vestidos">
-      Vestidos
-    </ion-segment-button>
-  </ion-segment>
-</div>
-
-<div [ngSwitch]="produtos">
-  <ion-list *ngSwitchCase="'calcas'">
-    
+  <ion-list>
+    <ion-item-sliding *ngFor="let produto of produtos | async">
+      <ion-item>
+        <img src="{{produto.foto}}">
+        <p>{{produto.descricao}}</p>
+        <p>{{produto.referencia}}</p>
+        <p>{{produto.compdesc}}</p>
+        <p>{{produto.preco}}</p>
+      </ion-item>
+      </ion-item-sliding>
   </ion-list>
-</div>
 
-<div [ngSwitch]="produtos">              
-  <ion-list *ngSwitchCase="'blusas'">
-    
-  </ion-list>
-</div>
-
-<div [ngSwitch]="prosutos">
-  <ion-list *ngSwitchCase="'vestidos'">
-    
-  </ion-list>
-</div>
-
-<div [ngSwitch]="produtos">
-  <ion-list *ngSwitchCase="'casacos'">
-   
-      
-  </ion-list>
-</div>
-
-<div [ngSwitch]="produtos">
-  <ion-list *ngSwitchCase="'coletes'">
-    
-
-    
-  </ion-list>
-</div>
-<ion-list>
-    <ion-item *ngFor="let item of items">
-      {{ item }}
-    </ion-item>
-  </ion-list>
 </ion-content>

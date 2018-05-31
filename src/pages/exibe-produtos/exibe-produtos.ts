@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { Observable } from 'rxjs/Observable';
+import { ProdutosProvider } from '../../providers/produtos/produtos';
 
 /**
  * Generated class for the ExibeProdutosPage page.
@@ -15,7 +17,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ExibeProdutosPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  produtos: Observable<any>;
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    private provider: ProdutosProvider,
+    private toast: ToastController) {
+      this.produtos = this.provider.buscarTodos();
   }
 
   ionViewDidLoad() {
