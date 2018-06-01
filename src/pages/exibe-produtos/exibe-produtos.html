@@ -8,17 +8,20 @@
 
 
 <ion-content padding>
-    
-  <ion-list>
-    <ion-item-sliding *ngFor="let produto of produtos | async">
-      <ion-item>
-        <img src="{{produto.foto}}">
-        <p>{{produto.descricao}}</p>
-        <p>{{produto.referencia}}</p>
-        <p>{{produto.compdesc}}</p>
-        <p>{{produto.preco}}</p>
-      </ion-item>
-      </ion-item-sliding>
-  </ion-list>
+
+    <ion-list>
+        <ion-item-sliding *ngFor="let produto of produtos | async">
+          <ion-item>
+              <ion-thumbnail item-start>
+                  <img src="{{produto.foto}}">
+                </ion-thumbnail>
+            <p>{{produto.descricao}}</p>
+            <p>{{produto.referencia}}</p>
+            <p>{{produto.compdesc}}</p>
+            <p>Valor R$ {{produto.preco}}</p>
+            <button type="button" (click)="selecionaProduto()">Adicionar</button>
+          </ion-item>
+        </ion-item-sliding>
+      </ion-list>
 
 </ion-content>

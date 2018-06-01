@@ -20,6 +20,8 @@ import { LoginPage } from '../pages/login/login';
 import { ProdutosPage } from '../pages/produtos/produtos';
 import { ProdutosProvider } from '../providers/produtos/produtos';
 import { ExibeProdutosPage } from '../pages/exibe-produtos/exibe-produtos';
+import { SacolaPage } from '../pages/sacola/sacola';
+import { SacolaProvider } from '../providers/sacola/sacola';
 
 
 
@@ -33,7 +35,8 @@ import { ExibeProdutosPage } from '../pages/exibe-produtos/exibe-produtos';
     CadastroPage,
     LoginPage,
     ProdutosPage,
-    ExibeProdutosPage
+    ExibeProdutosPage,
+    SacolaPage
   ],
   imports: [
     BrowserModule,
@@ -60,7 +63,8 @@ import { ExibeProdutosPage } from '../pages/exibe-produtos/exibe-produtos';
     CadastroPage,
     LoginPage,
     ProdutosPage,
-    ExibeProdutosPage
+    ExibeProdutosPage,
+    SacolaPage
   ],
   providers: [
     StatusBar,
@@ -68,6 +72,7 @@ import { ExibeProdutosPage } from '../pages/exibe-produtos/exibe-produtos';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ContactProvider,
     ProdutosProvider,
+    SacolaProvider,
   ]
 })
 export class AppModule {}

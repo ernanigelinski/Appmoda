@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { ProdutosProvider } from '../../providers/produtos/produtos';
+import { SacolaPage } from '../sacola/sacola';
 
 /**
  * Generated class for the ExibeProdutosPage page.
@@ -31,4 +32,7 @@ export class ExibeProdutosPage {
     console.log('ionViewDidLoad ExibeProdutosPage');
   }
 
+  selecionaProduto(){
+    this.navCtrl.push(SacolaPage);
+  }
 }
