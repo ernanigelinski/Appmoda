@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ToastController, NavParams } from 'ionic-angular';
-import {ContactProvider} from './../../providers/contact/contact';
+import {CadastroProvider} from './../../providers/cadastro/cadastro';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { CadastroPage } from '../cadastro/cadastro';
 

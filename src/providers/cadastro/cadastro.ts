@@ -7,12 +7,12 @@ import {AngularFireDatabase} from 'angularfire2/database';
   and Angular DI.
 */
 @Injectable()
-export class ContactProvider {
+export class CadastroProvider {
 
   private PATH = 'clientes/';
 
   constructor(private db: AngularFireDatabase) {
-    console.log('Hello ContactProvider Provider');
+   
   }
 
   salvar(cliente: any){

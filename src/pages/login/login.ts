@@ -4,6 +4,7 @@ import { HomePage } from '../home/home';
 import { FormGroup } from '@angular/forms';
 import { CadastroPage } from '../cadastro/cadastro';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { CategoriasPage } from '../categorias/categorias';
 
 @IonicPage()
 @Component({
@@ -46,7 +47,7 @@ export class LoginPage {
     this.fire.auth.signInWithEmailAndPassword(this.email.value, this.password.value)
       .then(data => {
         console.log('Seja Bem Vindo!!!');
-        this.navCtrl.push(HomePage);
+        this.navCtrl.push(CategoriasPage);
       })
       .catch((error: any) => {
         if (error.code == 'auth/invalid-email') { this.alert('E-mail Inválido!'); }

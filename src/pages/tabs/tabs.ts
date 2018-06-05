@@ -1,8 +1,4 @@
 import { Component } from '@angular/core';
-
-import { HomePage } from '../home/home';
-import { ProdutosPage } from '../produtos/produtos';
-import { LoginPage } from '../login/login';
 import { ExibeProdutosPage } from '../exibe-produtos/exibe-produtos';
 import { SacolaPage } from '../sacola/sacola';
 
@@ -11,10 +7,8 @@ import { SacolaPage } from '../sacola/sacola';
 })
 export class TabsPage {
 
-  tab1Root = HomePage;
-  tab2Root = ExibeProdutosPage;
-  tab3Root = LoginPage;
-  tab4Root = SacolaPage;
+  tab1Root = ExibeProdutosPage;
+  tab2Root = SacolaPage;
 
   constructor() {
 

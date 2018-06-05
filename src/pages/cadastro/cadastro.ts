@@ -1,9 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavParams, ToastController, AlertController } from 'ionic-angular';
-import { ContactProvider } from '../../providers/contact/contact';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { LoginPage } from '../login/login';
+import { CadastroProvider } from '../../providers/cadastro/cadastro';
 
 
 @IonicPage()
@@ -22,7 +22,7 @@ export class CadastroPage {
 
   constructor(public navParams: NavParams,
     private toast: ToastController,
-    private provider: ContactProvider,
+    private provider: CadastroProvider,
     private fire: AngularFireAuth,
     private alertCtrl: AlertController,
     private formBuilder: FormBuilder) {
@@ -57,12 +57,12 @@ export class CadastroPage {
   criaForm() {
     this.formCliente = this.formBuilder.group({
       key: [this.cliente.key],
-      nome: [this.cliente.nome, Validators.required],
+      nome: [this.cliente.nome, Validators.required, Validators.minLength(3), Validators.maxLength(120)],
       endereco: [this.cliente.endereco, Validators.required],
       numeroEnd: [this.cliente.numeroEnd, Validators.required],
       bairro: [this.cliente.bairro, Validators.required],
       telefone: [this.cliente.telefone, Validators.required],
-      email: [this.cliente.email, Validators.required],
+      email: [this.cliente.email, Validators.required, Validators.email],
       senha: [this.cliente.senha, Validators.required]
     })
   }

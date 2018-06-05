@@ -1,14 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { Observable } from 'rxjs/Observable';
-import { SacolaProvider } from '../../providers/sacola/sacola';
-
-/**
- * Generated class for the SacolaPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { IonicPage, NavController, NavParams} from 'ionic-angular';
+import { AngularFireStorage } from 'angularfire2/storage';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { ExibeProdutosPage } from '../exibe-produtos/exibe-produtos';
 
 @IonicPage()
 @Component({
@@ -17,18 +11,41 @@ import { SacolaProvider } from '../../providers/sacola/sacola';
 })
 export class SacolaPage {
 
-  produtos: Observable<any>;
-
+  private sacola: Array<any> = [];
+  produto = {
+     foto: "",
+     descricao: "",
+     referencia: "",
+     compdesc: "",
+     preco: ""  
+  }
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    private sacola: SacolaProvider,
-    private toastCtrl: ToastController) {
-      this.produtos = this.sacola.getProdutos();
-  }
-
-  selecionaProduto(){
+    private db: AngularFireDatabase,
+    private st: AngularFireStorage
+    ) {
+      if(this.navParams.get('sacola') != null){
+        this.sacola = this.navParams.get('sacola'); 
+      }
+      if(this.navParams.get('produto') != null){
+        this.produto = this.navParams.get('produto'); 
+        this.sacola.push(this.produto);
+      }
     
+      console.log(this.sacola);
   }
 
+  ionViewWilload(){
+   console.dir(this.produto);
+  }
+
+  continuar(){
+    this.navCtrl.getPrevious().data.sacola = this.sacola
+    this.navCtrl.pop();
+  }
+
+  finalizar(){
+
+  }
 }

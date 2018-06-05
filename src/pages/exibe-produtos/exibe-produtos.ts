@@ -4,12 +4,6 @@ import { Observable } from 'rxjs/Observable';
 import { ProdutosProvider } from '../../providers/produtos/produtos';
 import { SacolaPage } from '../sacola/sacola';
 
-/**
- * Generated class for the ExibeProdutosPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -19,20 +13,24 @@ import { SacolaPage } from '../sacola/sacola';
 export class ExibeProdutosPage {
 
   produtos: Observable<any>;
+  private sacola: Array<any> = [];
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     private provider: ProdutosProvider,
     private toast: ToastController) {
-      this.produtos = this.provider.buscarTodos();
+    this.produtos = this.provider.buscarTodos();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ExibeProdutosPage');
-  }
+  
+  selecionaProduto(produto) {
+    this.navCtrl.push(SacolaPage, {produto: produto, sacola: this.sacola});
 
-  selecionaProduto(){
-    this.navCtrl.push(SacolaPage);
+    }
+
+  ionViewWillEnter(){
+    this.sacola = this.navParams.get("sacola");
+    console.log(this.sacola);
   }
 }

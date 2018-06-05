@@ -10,7 +10,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { ContactProvider } from '../providers/contact/contact';
+import { CadastroProvider} from '../providers/cadastro/cadastro';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -70,7 +70,7 @@ import { SacolaProvider } from '../providers/sacola/sacola';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ContactProvider,
+    CadastroProvider,
     ProdutosProvider,
     SacolaProvider,
   ]

@@ -1,12 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
-/*
-  Generated class for the ProdutosProvider provider.
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
+
 @Injectable()
 export class ProdutosProvider {
 
@@ -15,7 +11,7 @@ export class ProdutosProvider {
   constructor(
     private db: AngularFireDatabase,
     private st: AngularFireStorage) {
-    console.log('Hello ProdutosProvider Provider');
+    
   }
 
   salvarproduto(produto: any) {
@@ -41,5 +37,10 @@ export class ProdutosProvider {
         key: c.key, ...c.payload.val()}));
       })
     }
+
+  buscarPorCategoria(produto: string){
+    
+   
+  }
     
 }
