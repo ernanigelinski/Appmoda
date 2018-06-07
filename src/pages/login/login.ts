@@ -1,10 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { HomePage } from '../home/home';
 import { FormGroup } from '@angular/forms';
 import { CadastroPage } from '../cadastro/cadastro';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { CategoriasPage } from '../categorias/categorias';
+import { ExibeProdutosPage } from '../exibe-produtos/exibe-produtos';
 
 @IonicPage()
 @Component({
@@ -27,10 +26,6 @@ export class LoginPage {
   ) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
-
   alert(message: string) {
     this.alertCtrl.create({
       title: 'Aviso',
@@ -47,7 +42,7 @@ export class LoginPage {
     this.fire.auth.signInWithEmailAndPassword(this.email.value, this.password.value)
       .then(data => {
         console.log('Seja Bem Vindo!!!');
-        this.navCtrl.push(CategoriasPage);
+        this.navCtrl.push(ExibeProdutosPage);
       })
       .catch((error: any) => {
         if (error.code == 'auth/invalid-email') { this.alert('E-mail Inválido!'); }

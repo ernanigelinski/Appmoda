@@ -54,10 +54,18 @@ export class CadastroPage {
     this.title = this.navParams.data.clientes ? 'Alterando Cliente' : 'Novo Cliente'
   }
 
+  alert(message: string){
+    this.alertCtrl.create({
+      title: 'Aviso',
+      subTitle: message,
+      buttons: ['OK']
+    }).present();
+  }
+  
   criaForm() {
     this.formCliente = this.formBuilder.group({
       key: [this.cliente.key],
-      nome: [this.cliente.nome, Validators.required, Validators.minLength(3), Validators.maxLength(120)],
+      nome: [this.cliente.nome, Validators.required],
       endereco: [this.cliente.endereco, Validators.required],
       numeroEnd: [this.cliente.numeroEnd, Validators.required],
       bairro: [this.cliente.bairro, Validators.required],
@@ -74,8 +82,9 @@ export class CadastroPage {
           this.toast.create({ message: 'Cliente Salvo', duration: 3000 }).present();
           this.navCtrl.push(LoginPage);
         })
-        .catch(error => {
-          console.log('error', error)
+        .catch((e) => {
+          this.toast.create({message: 'Erro ao Salvar Contato!', duration: 3000}).present();
+        console.error(e);
         })
     }
   }

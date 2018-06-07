@@ -4,13 +4,22 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
+<ion-content class="home" padding>
+  
   <p>
-    <img src="https://firebasestorage.googleapis.com/v0/b/appmoda-c73e9.appspot.com/o/2017-09-11%2010.52.46.png?alt=media&token=642c3a3e-1688-483c-9868-d7c415995bb8">
+    <img class="img" src="https://firebasestorage.googleapis.com/v0/b/appmoda-c73e9.appspot.com/o/Logo.png?alt=media&token=0a7fa20d-a95c-4832-8938-9f4b2a2de132">
   </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
+
+  <p class="orientacao">
+    Faça seu cadastro, após entre com seu login e senha.
+    </p>
+    <p class="orientacao">
+    Selecione os produtos que deseja experimentar, adicione-os na sacola.
   </p>
+  <p class="orientacao">
+    Ao finalizar a sacola receberei seu pedido e entregarei em sua casa, 
+    para que possa provar e decidir o que irá comprar.
+  </p>
+
+  <button class="entrar" ion-button block (click)="entrar()">Entrar</button>
 </ion-content>
