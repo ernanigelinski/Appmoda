@@ -63,6 +63,7 @@ export class CadastroPage {
   }
   
   criaForm() {
+    this.fire.auth.
     this.formCliente = this.formBuilder.group({
       key: [this.cliente.key],
       nome: [this.cliente.nome, Validators.required],
