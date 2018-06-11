@@ -20,20 +20,36 @@
           <ion-segment-button value="casacos">
             Casacos
           </ion-segment-button>
-          <ion-segment-button value="coletes">
-            Coletes
-          </ion-segment-button>
           <ion-segment-button value="vestidos">
             Vestidos
           </ion-segment-button>
         </ion-segment>
+      </div>
+
+      <div [ngSwitch]="categorias">
+        <ion-list *ngSwitchCase="'blusas'">
+          <ion-item-sliding *ngFor="let produto of produtos | async">
+            <ion-item *ngIf="produto.categoria == 'BLUSAS'">
+                <ion-thumbnail item-start>
+              <img src="{{produto.foto}}">
+            </ion-thumbnail>
+              <p>{{produto.descricao}}</p>
+              <p>{{produto.referencia}}</p>
+              <p>{{produto.compdesc}}</p> 
+              <p>Valor R$ {{produto.preco}}</p>
+              <button type="button" (click)="selecionaProduto(produto)">Adicionar</button>
+            </ion-item>
+          </ion-item-sliding>
+        </ion-list>
       </div>
       
       <div [ngSwitch]=" categorias">
         <ion-list *ngSwitchCase="'calcas'">
             <ion-item-sliding *ngFor="let produto of produtos | async">
                 <ion-item *ngIf="produto.categoria == 'CALCAS'">
-                  <img src="{{produto.foto}}">
+                    <ion-thumbnail item-start>
+                        <img src="{{produto.foto}}">
+                      </ion-thumbnail>
                   <p>{{produto.descricao}}</p>
                   <p>{{produto.referencia}}</p>
                   <p>{{produto.compdesc}}</p> 
@@ -44,32 +60,40 @@
         </ion-list>
       </div>
       
-      <div [ngSwitch]="produtos">              
-        <ion-list *ngSwitchCase="'blusas'">
-          
-        </ion-list>
-      </div>
-      
-      <div [ngSwitch]="prosutos">
+      <div [ngSwitch]="categorias">
         <ion-list *ngSwitchCase="'vestidos'">
-          
+          <ion-item-sliding *ngFor="let produto of produtos | async">
+            <ion-item *ngIf="produto.categoria == 'VESTIDOS'">
+                <ion-thumbnail item-start>
+                    <img src="{{produto.foto}}">
+                  </ion-thumbnail>
+              <p>{{produto.descricao}}</p>
+              <p>{{produto.referencia}}</p>
+              <p>{{produto.compdesc}}</p> 
+              <p>Valor R$ {{produto.preco}}</p>
+              <button type="button" (click)="selecionaProduto(produto)">Adicionar</button>
+            </ion-item>
+          </ion-item-sliding>
         </ion-list>
       </div>
       
-      <div [ngSwitch]="produtos">
+      <div [ngSwitch]="categorias">
         <ion-list *ngSwitchCase="'casacos'">
-         
-            
+          <ion-item-sliding *ngFor="let produto of produtos | async">
+            <ion-item *ngIf="produto.categoria == 'CASACOS'">
+                <ion-thumbnail item-start>
+                    <img src="{{produto.foto}}">
+                  </ion-thumbnail>
+              <p>{{produto.descricao}}</p>
+              <p>{{produto.referencia}}</p>
+              <p>{{produto.compdesc}}</p> 
+              <p>Valor R$ {{produto.preco}}</p>
+              <button type="button" (click)="selecionaProduto(produto)">Adicionar</button>
+            </ion-item>
+          </ion-item-sliding>            
         </ion-list>
       </div>
       
-      <div [ngSwitch]="produtos">
-        <ion-list *ngSwitchCase="'coletes'">
-          
-      
-          
-        </ion-list>
-      </div>
       <ion-list>
           <ion-item *ngFor="let item of items">
             {{ item }}

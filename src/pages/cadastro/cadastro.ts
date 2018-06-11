@@ -18,7 +18,7 @@ export class CadastroPage {
   formCliente: FormGroup;
   cliente: any;
   @ViewChild('email') email;
-  @ViewChild('password') password;
+  @ViewChild('password') senha;
 
   constructor(public navParams: NavParams,
     private toast: ToastController,
@@ -63,15 +63,14 @@ export class CadastroPage {
   }
   
   criaForm() {
-    this.fire.auth.
-    this.formCliente = this.formBuilder.group({
+      this.formCliente = this.formBuilder.group({
       key: [this.cliente.key],
       nome: [this.cliente.nome, Validators.required],
       endereco: [this.cliente.endereco, Validators.required],
       numeroEnd: [this.cliente.numeroEnd, Validators.required],
       bairro: [this.cliente.bairro, Validators.required],
       telefone: [this.cliente.telefone, Validators.required],
-      email: [this.cliente.email, Validators.required, Validators.email],
+      email: [this.cliente.email, Validators.required],
       senha: [this.cliente.senha, Validators.required]
     })
   }
@@ -80,12 +79,12 @@ export class CadastroPage {
     if (this.formCliente.valid) {
       this.provider.salvar(this.formCliente.value)
         .then(() => {
-          this.toast.create({ message: 'Cliente Salvo', duration: 3000 }).present();
           this.navCtrl.push(LoginPage);
+          this.toast.create({ message: 'Cliente Salvo', duration: 3000 }).present();
+          
         })
         .catch((e) => {
-          this.toast.create({message: 'Erro ao Salvar Contato!', duration: 3000}).present();
-        console.error(e);
+          
         })
     }
   }

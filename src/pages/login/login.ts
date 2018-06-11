@@ -16,8 +16,8 @@ export class LoginPage {
   title: string;
   form: FormGroup;
   cliente: any;
-  @ViewChild('email') email;
-  @ViewChild('password') password;
+  @ViewChild('cliente.email') email;
+  @ViewChild('cliente.senha') password;
 
   constructor(
     public navCtrl: NavController,
@@ -40,9 +40,9 @@ export class LoginPage {
   }
 
   acessar() {
-    this.fire.auth.signInWithEmailAndPassword(this.email.value, this.password.value)
+    this.fire.auth.signInWithEmailAndPassword(this.cliente.email, this.cliente.password)
       .then(data => {
-        console.log('Seja Bem Vindo!!!');
+        console.log('data', data);
         this.navCtrl.push(ExibeProdutosPage);
       })
       .catch((error: any) => {
