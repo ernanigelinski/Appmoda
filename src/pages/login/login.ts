@@ -42,7 +42,7 @@ export class LoginPage {
   acessar() {
     this.fire.auth.signInWithEmailAndPassword(this.cliente.email, this.cliente.password)
       .then(data => {
-        console.log('data', data);
+        this.alert('Seja Bem Vindo!!!');
         this.navCtrl.push(ExibeProdutosPage);
       })
       .catch((error: any) => {

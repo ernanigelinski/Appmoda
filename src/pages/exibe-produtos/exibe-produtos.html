@@ -7,11 +7,11 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content class="produto" padding>
 
     <div padding>
         <ion-segment [(ngModel)]="categorias">
-          <ion-segment-button value="blusas">
+          <ion-segment-button class="botoes" value="blusas">
             Blusas
           </ion-segment-button>
           <ion-segment-button value="calcas">
@@ -30,9 +30,7 @@
         <ion-list *ngSwitchCase="'blusas'">
           <ion-item-sliding *ngFor="let produto of produtos | async">
             <ion-item *ngIf="produto.categoria == 'BLUSAS'">
-                <ion-thumbnail item-start>
               <img src="{{produto.foto}}">
-            </ion-thumbnail>
               <p>{{produto.descricao}}</p>
               <p>{{produto.referencia}}</p>
               <p>{{produto.compdesc}}</p> 
@@ -47,9 +45,7 @@
         <ion-list *ngSwitchCase="'calcas'">
             <ion-item-sliding *ngFor="let produto of produtos | async">
                 <ion-item *ngIf="produto.categoria == 'CALCAS'">
-                    <ion-thumbnail item-start>
-                        <img src="{{produto.foto}}">
-                      </ion-thumbnail>
+                  <img src="{{produto.foto}}">
                   <p>{{produto.descricao}}</p>
                   <p>{{produto.referencia}}</p>
                   <p>{{produto.compdesc}}</p> 
@@ -64,9 +60,7 @@
         <ion-list *ngSwitchCase="'vestidos'">
           <ion-item-sliding *ngFor="let produto of produtos | async">
             <ion-item *ngIf="produto.categoria == 'VESTIDOS'">
-                <ion-thumbnail item-start>
-                    <img src="{{produto.foto}}">
-                  </ion-thumbnail>
+              <img src="{{produto.foto}}">
               <p>{{produto.descricao}}</p>
               <p>{{produto.referencia}}</p>
               <p>{{produto.compdesc}}</p> 
@@ -81,9 +75,7 @@
         <ion-list *ngSwitchCase="'casacos'">
           <ion-item-sliding *ngFor="let produto of produtos | async">
             <ion-item *ngIf="produto.categoria == 'CASACOS'">
-                <ion-thumbnail item-start>
-                    <img src="{{produto.foto}}">
-                  </ion-thumbnail>
+              <img src="{{produto.foto}}">
               <p>{{produto.descricao}}</p>
               <p>{{produto.referencia}}</p>
               <p>{{produto.compdesc}}</p> 
