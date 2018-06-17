@@ -22,6 +22,7 @@ import { ProdutosProvider } from '../providers/produtos/produtos';
 import { ExibeProdutosPage } from '../pages/exibe-produtos/exibe-produtos';
 import { SacolaPage } from '../pages/sacola/sacola';
 import { SacolaProvider } from '../providers/sacola/sacola';
+import { LoginProvider } from '../providers/login/login';
 
 
 
@@ -73,6 +74,7 @@ import { SacolaProvider } from '../providers/sacola/sacola';
     CadastroProvider,
     ProdutosProvider,
     SacolaProvider,
+    LoginProvider,
   ]
 })
 export class AppModule {}

@@ -11,28 +11,17 @@
   
   <ion-list>
     <ion-item class="login">
-      <ion-label  floating>email</ion-label>
-      <ion-input type="email" #email></ion-input>
+      <ion-label  floating>email</ion-label>  
+      <ion-input [(ngModel)]='cliente.senha' name="email" type="email"></ion-input>
     </ion-item>
     <ion-item class="login">
         <ion-label class="senha" floating>Senha</ion-label>
-        <ion-input type="password" #password></ion-input>
+        <ion-input [(ngModel)]='cliente.email' name="senha" type="password"></ion-input>
       </ion-item>
   </ion-list>
   <div padding>
     <button class="acessar" block ion-button (click)="acessar()" item-left>Entrar</button>
   </div>
   <a class="ntc" (click)="cadastrarCliente()" item-left>Não tem Cadastro? Clique aqui</a>
-
-  <h4>Logar com:</h4>
-  <button ion-button (click)="logarComFacebook()">
-    <ion-icon name="logo-facebook"></ion-icon>
-  </button>
-  <button class="google" ion-button (click)="logarComGoogle()">
-    <ion-icon name="logo-google"></ion-icon>
-  </button>
-  <button ion-button (click)="logarComTwitter()">
-    <ion-icon name="logo-twitter"></ion-icon>
-  </button>
-
+  
 </ion-content>

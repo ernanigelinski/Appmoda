@@ -37,10 +37,4 @@ export class ProdutosProvider {
         key: c.key, ...c.payload.val()}));
       })
     }
-
-  buscarPorCategoria(produto: string){
-    
-   
-  }
-    
 }
