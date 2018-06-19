@@ -12,11 +12,11 @@
   <ion-list>
     <ion-item class="login">
       <ion-label  floating>email</ion-label>  
-      <ion-input [(ngModel)]='cliente.senha' name="email" type="email"></ion-input>
+      <ion-input type="text" #email></ion-input>
     </ion-item>
     <ion-item class="login">
         <ion-label class="senha" floating>Senha</ion-label>
-        <ion-input [(ngModel)]='cliente.email' name="senha" type="password"></ion-input>
+        <ion-input type="password" #password></ion-input>
       </ion-item>
   </ion-list>
   <div padding>

@@ -62,7 +62,7 @@
 
     <ion-item class="cadastro">
       <ion-label class="form" stacked>E-mail</ion-label>
-      <ion-input class="conteudo" type="email" formControlName="email"></ion-input>
+      <ion-input class="conteudo" type="email" formControlName="email" #email></ion-input>
     </ion-item>
     <ion-item *ngIf="!formCliente.controls.email.valid && (formCliente.controls.email.dirty || formCliente.controls.email.touched)" color="danger">
       <div [hidden]="!formCliente.controls.email.errors.required">
@@ -72,7 +72,7 @@
 
     <ion-item class="cadastro">
       <ion-label class="form" stacked>Senha</ion-label>
-      <ion-input class="conteudo" type="password" formControlName="senha"></ion-input>
+      <ion-input class="conteudo" type="password" formControlName="senha" #senha></ion-input>
     </ion-item>
     <ion-item *ngIf="!formCliente.controls.senha.valid && (formCliente.controls.senha.dirty || formCliente.controls.senha.touched)" color="danger">
       <div [hidden]="!formCliente.controls.email.errors.required">
@@ -81,7 +81,7 @@
     </ion-item>
 
     <div padding>
-      <button class="salvar" ion-button block type="submit" [disabled]="!formCliente.valid" (click)="salvar()">Salvar</button>
+      <button class="salvar" ion-button block type="submit" [disabled]="!formCliente.valid" (click)="teste()">Salvar</button>
     </div>
 
   </form>

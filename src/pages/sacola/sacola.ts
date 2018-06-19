@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { ExibeProdutosPage } from '../exibe-produtos/exibe-produtos';
+import { SacolaProvider } from '../../providers/sacola/sacola';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @IonicPage()
 @Component({
@@ -11,41 +13,58 @@ import { ExibeProdutosPage } from '../exibe-produtos/exibe-produtos';
 })
 export class SacolaPage {
 
+  formsac: FormGroup;
+
   private sacola: Array<any> = [];
   produto = {
-     foto: "",
-     descricao: "",
-     referencia: "",
-     compdesc: "",
-     preco: ""  
+    foto: "",
+    descricao: "",
+    referencia: "",
+    compdesc: "",
+    preco: ""
   }
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     private db: AngularFireDatabase,
-    private st: AngularFireStorage
-    ) {
-      if(this.navParams.get('sacola') != null){
-        this.sacola = this.navParams.get('sacola'); 
-      }
-      if(this.navParams.get('produto') != null){
-        this.produto = this.navParams.get('produto'); 
-        this.sacola.push(this.produto);
-      }
-    
-      console.log(this.sacola);
+    private st: AngularFireStorage,
+    private provider: SacolaProvider,
+    private toast: ToastController,
+    private formBuilder: FormBuilder
+  ) {
+    if (this.navParams.get('sacola') != null) {
+      this.sacola = this.navParams.get('sacola');
+    }
+    if (this.navParams.get('produto') != null) {
+      this.produto = this.navParams.get('produto');
+      this.sacola.push(this.produto);
+      
+    }
+
+    console.log(this.sacola);
   }
 
-  ionViewWilload(){
-   console.dir(this.produto);
+  ionViewWilload() {
+    console.dir(this.produto);
   }
 
-  continuar(){
+  
+
+  continuar() {
     this.navCtrl.getPrevious().data.sacola = this.sacola
     this.navCtrl.pop();
   }
 
-  finalizar(){
-
-  }
+  salvarSacola() {
+    console.log(this.sacola)
+    this.provider.salvarSacola(this.sacola.values)
+      .then(() => {
+        this.toast.create({ message: 'Sacola Salva', duration: 3000 }).present();
+        this.navCtrl.push(ExibeProdutosPage);
+      })
+      .catch((e) => {
+        this.toast.create({ message: 'Erro ao Salvar Sacola', duration: 3000 }).present();
+        console.error(e);
+      })
+}
 }

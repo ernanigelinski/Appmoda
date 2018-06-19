@@ -7,9 +7,10 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content class="sacola" padding>
+    
 <button type="button" (click)="continuar()">Continuar Comprando</button>
-  
+
   <ion-list>
     <ion-item-sliding *ngFor="let produto of sacola">
       <ion-item>
@@ -23,4 +24,9 @@
       </ion-item>
     </ion-item-sliding>
   </ion-list>
+
+  <div padding>
+    <button class="finalizar" ion-button block type="submit" (click)="salvarSacola(produto)">Finalizar</button>
+  </div>
+
 </ion-content>

@@ -1,9 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavParams, ToastController, AlertController } from 'ionic-angular';
+import { IonicPage, NavParams, ToastController, AlertController, NavController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { LoginPage } from '../login/login';
 import { CadastroProvider } from '../../providers/cadastro/cadastro';
+import { ExibeProdutosPage } from '../exibe-produtos/exibe-produtos';
+
 
 
 @IonicPage()
@@ -18,15 +20,17 @@ export class CadastroPage {
   formCliente: FormGroup;
   cliente: any;
   @ViewChild('email') email;
-  @ViewChild('password') senha;
+  @ViewChild('senha') senha;
 
-  constructor(public navParams: NavParams,
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
     private toast: ToastController,
     private provider: CadastroProvider,
     private fire: AngularFireAuth,
     private alertCtrl: AlertController,
     private formBuilder: FormBuilder) {
-    this.cliente = this.navParams.data.contato || {};
+    this.cliente = this.navParams.data.cliente || {};
     this.criaForm();
     this.setupPageTitle();
   }
@@ -34,12 +38,22 @@ export class CadastroPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad CadastroPage');
   }
-/*
+
+  teste(){
+    this.navCtrl.push(LoginPage);
+  }
   registrarcliente() {
-    this.fire.auth.createUserWithEmailAndPassword(this.email.value, this.password.value)
+    this.fire.auth.createUserWithEmailAndPassword(this.email.value, this.senha.value)
       .then(data => {
-        this.alert('Cadastro efetuado com sucesso!!!');
-        this.navCtrl.push(LoginPage);
+        this.provider.salvar(this.formCliente.value)
+        .then(() => {
+         this.alert('Cadastro efetuado com sucesso!!!');
+         
+        })
+        .catch((e) => {
+          this.alert('Erro ao cadastrar!!! ' + e);
+        });
+        
       })
       .catch((error: any) => {
         if (error.code == 'auth/email-already-in-use') { this.alert('E-mail já Cadastrado!'); }
@@ -47,8 +61,9 @@ export class CadastroPage {
         else if (error.code == 'auth/operation-not-allowed') { this.alert('A conta precisa ser ativada!'); }
         else if (error.code == 'auth/weak-password') { this.alert('A senha é muito fraca!'); }
       })
+      
 }
-*/
+
 
   private setupPageTitle() {
     this.title = this.navParams.data.clientes ? 'Alterando Cliente' : 'Novo Cliente'
@@ -71,21 +86,9 @@ export class CadastroPage {
       bairro: [this.cliente.bairro, Validators.required],
       telefone: [this.cliente.telefone, Validators.required],
       email: [this.cliente.email, Validators.required],
-      senha: [this.cliente.senha, Validators.required]
+      senha: [this.cliente.senha, Validators.required],
+      chave: [this.fire.auth.currentUser.uid]
     })
   }
 
-  salvar() {
-    if (this.formCliente.valid) {
-      this.provider.salvar(this.formCliente.value)
-        .then(() => {
-          this.navCtrl.push(LoginPage);
-          this.toast.create({ message: 'Cliente Salvo', duration: 3000 }).present();
-          
-        })
-        .catch((e) => {
-          
-        })
-    }
-  }
 }

@@ -29,7 +29,7 @@
       <div [ngSwitch]="categorias">
         <ion-list *ngSwitchCase="'blusas'">
           <ion-item-sliding *ngFor="let produto of produtos | async">
-            <ion-item *ngIf="produto.categoria == 'BLUSAS'">
+            <ion-item *ngIf="produto.categoria == 'blusas'">
               <img src="{{produto.foto}}">
               <p>{{produto.descricao}}</p>
               <p>{{produto.referencia}}</p>
@@ -44,11 +44,11 @@
       <div [ngSwitch]=" categorias">
         <ion-list *ngSwitchCase="'calcas'">
             <ion-item-sliding *ngFor="let produto of produtos | async">
-                <ion-item *ngIf="produto.categoria == 'CALCAS'">
+                <ion-item *ngIf="produto.categoria == 'calcas'">
                   <img src="{{produto.foto}}">
                   <p>{{produto.descricao}}</p>
                   <p>{{produto.referencia}}</p>
-                  <p>{{produto.compdesc}}</p> 
+                  <textarea rows="4" class="txt">{{produto.compdesc}}</textarea> 
                   <p>Valor R$ {{produto.preco}}</p>
                   <button type="button" (click)="selecionaProduto(produto)">Adicionar</button>
                 </ion-item>
@@ -59,7 +59,7 @@
       <div [ngSwitch]="categorias">
         <ion-list *ngSwitchCase="'vestidos'">
           <ion-item-sliding *ngFor="let produto of produtos | async">
-            <ion-item *ngIf="produto.categoria == 'VESTIDOS'">
+            <ion-item *ngIf="produto.categoria == 'vestidos'">
               <img src="{{produto.foto}}">
               <p>{{produto.descricao}}</p>
               <p>{{produto.referencia}}</p>
@@ -74,7 +74,7 @@
       <div [ngSwitch]="categorias">
         <ion-list *ngSwitchCase="'casacos'">
           <ion-item-sliding *ngFor="let produto of produtos | async">
-            <ion-item *ngIf="produto.categoria == 'CASACOS'">
+            <ion-item *ngIf="produto.categoria == 'casacos'">
               <img src="{{produto.foto}}">
               <p>{{produto.descricao}}</p>
               <p>{{produto.referencia}}</p>
