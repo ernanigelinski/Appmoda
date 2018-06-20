@@ -14,7 +14,8 @@ export class ExibeProdutosPage {
 
   produtos: Observable<any>;
   private sacola: Array<any> = [];
-
+  categorias: string = "blusas";
+  
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,

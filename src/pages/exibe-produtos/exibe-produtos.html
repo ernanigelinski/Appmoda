@@ -3,30 +3,31 @@
   <ion-navbar>
     <ion-title>produtos</ion-title>
   </ion-navbar>
+<ion-toolbar mode="ios" color="#FFCD73">
+  
+    <ion-segment [(ngModel)]="categorias">
+      <ion-segment-button class="botoes" value="blusas">
+        Blusas
+      </ion-segment-button>
+      <ion-segment-button value="calcas">
+        Calcas
+      </ion-segment-button>
+      <ion-segment-button value="casacos">
+        Casacos
+      </ion-segment-button>
+      <ion-segment-button value="vestidos">
+        Vestidos
+      </ion-segment-button>
+    </ion-segment>
+  
+</ion-toolbar>
 
 </ion-header>
 
 
 <ion-content class="produto" padding>
 
-    <div padding>
-        <ion-segment [(ngModel)]="categorias">
-          <ion-segment-button class="botoes" value="blusas">
-            Blusas
-          </ion-segment-button>
-          <ion-segment-button value="calcas">
-            Calcas
-          </ion-segment-button>
-          <ion-segment-button value="casacos">
-            Casacos
-          </ion-segment-button>
-          <ion-segment-button value="vestidos">
-            Vestidos
-          </ion-segment-button>
-        </ion-segment>
-      </div>
-
-      <div [ngSwitch]="categorias">
+  <div [ngSwitch]="categorias">
         <ion-list *ngSwitchCase="'blusas'">
           <ion-item-sliding *ngFor="let produto of produtos | async">
             <ion-item *ngIf="produto.categoria == 'blusas'">
@@ -35,7 +36,7 @@
               <p>{{produto.referencia}}</p>
               <p>{{produto.compdesc}}</p> 
               <p>Valor R$ {{produto.preco}}</p>
-              <button type="button" (click)="selecionaProduto(produto)">Adicionar</button>
+              <button ion-button block class="sel" type="button" (click)="selecionaProduto(produto)">Adicionar</button>
             </ion-item>
           </ion-item-sliding>
         </ion-list>
@@ -50,7 +51,7 @@
                   <p>{{produto.referencia}}</p>
                   <textarea rows="4" class="txt">{{produto.compdesc}}</textarea> 
                   <p>Valor R$ {{produto.preco}}</p>
-                  <button type="button" (click)="selecionaProduto(produto)">Adicionar</button>
+                  <button ion-button block class="sel" type="button" (click)="selecionaProduto(produto)">Adicionar</button>
                 </ion-item>
               </ion-item-sliding>
         </ion-list>
@@ -65,7 +66,7 @@
               <p>{{produto.referencia}}</p>
               <p>{{produto.compdesc}}</p> 
               <p>Valor R$ {{produto.preco}}</p>
-              <button type="button" (click)="selecionaProduto(produto)">Adicionar</button>
+              <button ion-button block class="sel" type="button" (click)="selecionaProduto(produto)">Adicionar</button>
             </ion-item>
           </ion-item-sliding>
         </ion-list>
@@ -80,15 +81,9 @@
               <p>{{produto.referencia}}</p>
               <p>{{produto.compdesc}}</p> 
               <p>Valor R$ {{produto.preco}}</p>
-              <button type="button" (click)="selecionaProduto(produto)">Adicionar</button>
+              <button icon-left ion-button block class="sel" type="button" (click)="selecionaProduto(produto)">Adicionar</button>
             </ion-item>
-          </ion-item-sliding>            
+          </ion-item-sliding>
         </ion-list>
       </div>
-      
-      <ion-list>
-          <ion-item *ngFor="let item of items">
-            {{ item }}
-          </ion-item>
-        </ion-list>
 </ion-content>

@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { FormGroup } from '@angular/forms';
 import { CadastroPage } from '../cadastro/cadastro';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -23,7 +23,8 @@ export class LoginPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private fire: AngularFireAuth,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private toast: ToastController
   ) {
   }
 
@@ -43,8 +44,8 @@ export class LoginPage {
     console.log(this.senha);
     this.fire.auth.signInWithEmailAndPassword(this.email.value, this.senha.value)
       .then(data => {
-        this.alert('Seja Bem Vindo!!!');
-        this.navCtrl.push(ExibeProdutosPage);
+        this.toast.create({ message: 'Bem vinda!!!', duration: 3000 }).present();
+        this.navCtrl.setRoot(ExibeProdutosPage);
       })
       .catch((error: any) => {
         if (error.code == 'auth/invalid-email') { this.alert('E-mail Inválido!'); }

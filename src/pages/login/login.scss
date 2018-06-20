@@ -1,7 +1,7 @@
 page-login {
     .login{
-        background-color: black;
-        color: darkgoldenrod;
+        background-color: #FFCD73;
+        color: black;
     }
     .acessar{
         background-color: darkgoldenrod;
@@ -9,9 +9,12 @@ page-login {
         font-weight: bold;
     }
     .ntc{
-        color: darkgoldenrod;
+        color: black;
+        font-weight: bold;
+        font-size: medium;
     }
-    .google{
-        background-color: red;
+
+    .icon{
+        margin: 10px;
     }
 }

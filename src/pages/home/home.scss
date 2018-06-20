@@ -1,18 +1,23 @@
 page-home {
     .home{
-        background-color: black;
+        background-color: #FFCD73;
     }
     .img{ 
        margin-left: 8%;
     }
     .orientacao{
-        color: white;
+        color: black;
         text-justify: auto;
         font-size: 20px;
     }
-    .entrar{
+    .but{
         color: black;
         font-weight: bold;
         background-color: darkgoldenrod;
+    }
+
+    .icon{
+        margin: 10px;
+
     }
 }

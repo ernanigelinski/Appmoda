@@ -22,6 +22,7 @@ import { ExibeProdutosPage } from '../pages/exibe-produtos/exibe-produtos';
 import { SacolaPage } from '../pages/sacola/sacola';
 import { SacolaProvider } from '../providers/sacola/sacola';
 import { LoginProvider } from '../providers/login/login';
+import { EmailComposer } from '@ionic-native/email-composer';
 
 
 
@@ -72,6 +73,7 @@ import { LoginProvider } from '../providers/login/login';
     ProdutosProvider,
     SacolaProvider,
     LoginProvider,
+    EmailComposer
   ]
 })
 export class AppModule {}

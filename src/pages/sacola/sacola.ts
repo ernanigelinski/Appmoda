@@ -38,7 +38,7 @@ export class SacolaPage {
     if (this.navParams.get('produto') != null) {
       this.produto = this.navParams.get('produto');
       this.sacola.push(this.produto);
-      
+
     }
 
     console.log(this.sacola);
@@ -48,16 +48,13 @@ export class SacolaPage {
     console.dir(this.produto);
   }
 
-  
-
   continuar() {
     this.navCtrl.getPrevious().data.sacola = this.sacola
     this.navCtrl.pop();
   }
 
   salvarSacola() {
-    console.log(this.sacola)
-    this.provider.salvarSacola(this.sacola.values)
+    this.provider.salvarSacola(this.sacola)
       .then(() => {
         this.toast.create({ message: 'Sacola Salva', duration: 3000 }).present();
         this.navCtrl.push(ExibeProdutosPage);
@@ -66,5 +63,5 @@ export class SacolaPage {
         this.toast.create({ message: 'Erro ao Salvar Sacola', duration: 3000 }).present();
         console.error(e);
       })
-}
+  }
 }

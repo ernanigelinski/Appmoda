@@ -1,6 +1,6 @@
 page-exibe-produtos {
     .produto{
-        background-color: black;
+        background-color: #FFCD73;
     }
 
     .segment{
@@ -14,4 +14,11 @@ page-exibe-produtos {
     .txt{
         width: 400px;
     }
+
+    .sel{
+        background: #FFCD73;
+        color: black;
+        font-weight: bold;
+    }
+
 }
