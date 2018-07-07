@@ -2,23 +2,24 @@
 
   <ion-navbar>
     <ion-title>sacola</ion-title>
+
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content class="sacola" padding>
-    
-<button ion-button block class="but" type="button" (click)="continuar()">
+
+  <button ion-button block class="but" type="button" (click)="continuar()">
     <ion-icon name="cart" class="icon"></ion-icon>
-  Continuar Comprando</button>
-<br>
+    Continuar Comprando</button>
+  <br>
   <ion-list>
     <ion-item-sliding *ngFor="let produto of sacola">
       <ion-item>
-          <ion-thumbnail item-start>
-              <img src="{{produto.foto}}">
-            </ion-thumbnail>
+        <ion-thumbnail item-start>
+          <img src="{{produto.foto}}">
+        </ion-thumbnail>
         <p>{{produto.descricao}}</p>
         <p>{{produto.referencia}}</p>
         <p>{{produto.compdesc}}</p>

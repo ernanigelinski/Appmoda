@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { AngularFireStorage } from 'angularfire2/storage';
-import { AngularFireDatabase } from 'angularfire2/database';
-import { ExibeProdutosPage } from '../exibe-produtos/exibe-produtos';
+import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
 import { SacolaProvider } from '../../providers/sacola/sacola';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 
 @IonicPage()
 @Component({
@@ -12,7 +9,8 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   templateUrl: 'sacola.html',
 })
 export class SacolaPage {
-
+  [x: string]: any;
+  title: string;
   formsac: FormGroup;
 
   private sacola: Array<any> = [];
@@ -23,14 +21,13 @@ export class SacolaPage {
     compdesc: "",
     preco: ""
   }
+  Platform: any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private db: AngularFireDatabase,
-    private st: AngularFireStorage,
     private provider: SacolaProvider,
     private toast: ToastController,
-    private formBuilder: FormBuilder
+    private alertCtrl: AlertController,
   ) {
     if (this.navParams.get('sacola') != null) {
       this.sacola = this.navParams.get('sacola');
@@ -38,14 +35,20 @@ export class SacolaPage {
     if (this.navParams.get('produto') != null) {
       this.produto = this.navParams.get('produto');
       this.sacola.push(this.produto);
-
     }
 
-    console.log(this.sacola);
   }
 
   ionViewWilload() {
     console.dir(this.produto);
+  }
+
+  alert(message: string){
+    this.alertCtrl.create({
+      title: 'Aviso',
+      subTitle: message,
+      buttons: ['OK']
+    }).present();
   }
 
   continuar() {
@@ -56,12 +59,12 @@ export class SacolaPage {
   salvarSacola() {
     this.provider.salvarSacola(this.sacola)
       .then(() => {
-        this.toast.create({ message: 'Sacola Salva', duration: 3000 }).present();
-        this.navCtrl.push(ExibeProdutosPage);
+        this.alert('Seu pedido foi salvo! Logo entrarei em contato para entregar!!!');
       })
       .catch((e) => {
         this.toast.create({ message: 'Erro ao Salvar Sacola', duration: 3000 }).present();
         console.error(e);
       })
   }
+
 }

@@ -3,18 +3,21 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { AngularFireAuth } from 'angularfire2/auth';
 
+
 @Injectable()
 export class SacolaProvider {
 
   private PATH = 'sacolas/';
   chave: string;
+  Platform: any;
 
   constructor(
     private db: AngularFireDatabase,
     private st: AngularFireStorage,
     private fire: AngularFireAuth,
-    ) {
+  ) {
     this.chave = this.fire.auth.currentUser.uid;
+
   }
 
   salvarSacola(sacola: any) {
@@ -29,3 +32,5 @@ export class SacolaProvider {
   }
 
 }
+
+

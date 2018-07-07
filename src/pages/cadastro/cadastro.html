@@ -74,14 +74,14 @@
       <ion-label class="form" stacked>Senha</ion-label>
       <ion-input class="conteudo" type="password" formControlName="senha" #senha></ion-input>
     </ion-item>
-    <ion-item *ngIf="!formCliente.controls.senha.valid && (formCliente.controls.senha.dirty || formCliente.controls.senha.touched)" color="danger">
+    <ion-item *ngIf="!formCliente.controls.senha.valid && (formCliente.controls.senha.touched)" color="danger">
       <div [hidden]="!formCliente.controls.email.errors.required">
         O Campo é Obrigatório!
       </div>
     </ion-item>
 
     <div padding>
-      <button class="salvar" ion-button block type="submit" [disabled]="!formCliente.valid" (click)="teste()">Salvar</button>
+      <button class="salvar" ion-button block type="submit" [disabled]="!formCliente.valid" (click)="registrarCliente()">Salvar</button>
     </div>
 
   </form>

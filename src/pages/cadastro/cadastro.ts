@@ -1,11 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavParams, ToastController, AlertController, NavController } from 'ionic-angular';
+import { IonicPage, NavParams, AlertController, NavController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { LoginPage } from '../login/login';
 import { CadastroProvider } from '../../providers/cadastro/cadastro';
-import { ExibeProdutosPage } from '../exibe-produtos/exibe-produtos';
-
 
 
 @IonicPage()
@@ -25,7 +23,6 @@ export class CadastroPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private toast: ToastController,
     private provider: CadastroProvider,
     private fire: AngularFireAuth,
     private alertCtrl: AlertController,
@@ -39,16 +36,13 @@ export class CadastroPage {
     console.log('ionViewDidLoad CadastroPage');
   }
 
-  teste(){
-    this.navCtrl.push(LoginPage);
-  }
-  registrarcliente() {
+  registrarCliente() {
     this.fire.auth.createUserWithEmailAndPassword(this.email.value, this.senha.value)
       .then(data => {
         this.provider.salvar(this.formCliente.value)
         .then(() => {
          this.alert('Cadastro efetuado com sucesso!!!');
-         
+         this.navCtrl.push(LoginPage);
         })
         .catch((e) => {
           this.alert('Erro ao cadastrar!!! ' + e);
